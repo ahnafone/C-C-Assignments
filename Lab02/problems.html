@@ -1,0 +1,105 @@
+<meta charset="utf8">
+<html>
+<body>
+<pre>
+CMPUT 201 (A1) Lab Exercise 2
+
+Due: Friday Sep 28, 22:00 via eClass
+
+Rules:
+
+- You can use all course material and man pages, but no other information such
+  as web pages, books, or written notes. Using other information sources
+  during the exercise constitues cheating
+
+- Your programs must compile without warning using
+
+  g++ -Wall -Wextra -O ...
+
+  on our lab machines. If there are compiler warnings or errors, there will be
+  considerable mark deductions
+
+- Test your programs with different values. For now, the speed of your program
+  is irrelevant. So don't spend time on optimization
+
+- Your programs must be well structured. Use ctrl-x t in Emacs to pretty-print
+  it. Marks are assigned to functionality and program appearance
+
+- In case your program hangs, use ctrl-c to terminate it
+
+- Download README.txt and fill in the requested information
+
+- Submit             README.txt p1.c p2.c p3.c p4.c
+  by the due date
+
+- You can submit as often as you want. We will only consider the last
+  submission for marking.
+
+============================================================================
+
+1) [8 marks] In file p1.c write a function called power 
+
+                   y
+    that computes x  for two parameters: double x and unsigned int y
+              
+    We define x⁰ = 1 for all x
+
+    In function main() provide code to test your function.
+    You can't use functions from math.h
+
+============================================================================
+
+2) [8 marks] In file p2.c write a RECURSIVE function called 
+   is_power_of_2 that returns true if and only if a given
+   unsigned int x parameter is an integer power of 2
+
+   E.g.  is_power_of_2(16) = true
+         is_power_of_2(17) = false
+
+   In function main() provide code to test your function.
+   You can't use functions from math.h
+
+============================================================================
+
+3) [8 marks] In file p3.c write a function called iterated_digit_sum that
+   computes the sum of base-10 digits of a given unsigned int x and repeats
+   that computation for the result until the value doesn't change anymore
+
+    Examples:   iterated_digit_sum(0)     = 0
+                iterated_digit_sum(26)    = 8
+                iterated_digit_sum(11111) = 5
+                iterated_digit_sum(22222) = 1
+
+   In function main() provide code to test your function
+   You can't use functions from math.h
+
+============================================================================
+
+4) [8 marks] In file p4.c write a function called myexp 
+
+                      x
+   that approximates e , where e is Euler's constant (2.718281...) and
+   x is a double floating point value, using
+                  
+    x       x    x ²  x ³  x⁴  
+   e  = 1 + -- + -- + -- + -- + ...
+            1!   2!   3!   4! 
+
+   by adding up the expressions until the sum doesn't change anymore
+
+   Recall that n! denotes the factorial function applied to n,
+   i.e., n! = 1*2*3...*n, 0! = 1
+
+   Examples:
+
+     myexp(0)   = 1
+     myexp(1)   = 2.7182... ~ e
+     myexp(-1)  = 0.3678... ~ 1/e
+                               _
+     myexp(0.5) = 1.6487... ~ √e
+
+   In function main() provide code to test your function.
+   You can't use functions from math.h
+<pre>
+</body>
+</html>

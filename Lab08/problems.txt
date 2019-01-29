@@ -1,0 +1,134 @@
+CMPUT 201 (A1) Lab Exercise 8
+
+Due: Friday Nov 9, 22:00
+
+Rules:
+
+- IMPORTANT: You need to comment your code. At least in front of every
+  function and every loop, you need to put comments that explain the purpose
+  of the function and how the loop works - in general terms. Also, there will
+  be considerable mark deductions if the code is not formatted well. Comments
+  and well formatted code help TAs with marking your submission
+
+- Your programs must compile without warning using
+
+    g++ -Wall -Wextra -Wconversion -O ...
+
+- Check your program (say a.out) for memory leaks with valgrind. E.g.
+
+    valgrind a.out
+
+- In case your program hangs, use ctrl-c to terminate it.
+  Use ctrl-d to terminate keyboard input to your programs
+
+- Work on copy.c serialize.c and upload
+
+    README.txt copy.c serialize.c
+
+  to eClass
+
+LATE SUBMISSIONS WILL NOT BE ACCEPTED!
+
+============================================================================
+
+1) [12] 
+
+   In file copy.c write a program that copies a file to another.
+   Two filenames are passed as command line arguments
+
+   Call example: copy file1 file2
+
+   copies file1 to file2. file1 must exist and the filenames must be
+   different
+
+   A) Implement function 
+
+      void read_write(FILE *fp_in, FILE *fp_out)
+
+      that writes all bytes read from *fp1 to *fp2. Both files
+      are assumed to be opened already
+
+      Handle all errors by printing messages and calling exit(10)
+
+   B) Implement function
+
+      int main(int argc, char *argv[])
+
+      that 
+
+      - checks command line parameters,
+      - checks whether the source file exists and is readable,
+      - sets up the parameters for read_write, 
+      - calls read_write, and 
+      - finishes up by closing all files
+
+      All errors need to be handled by printing error messages and
+      calling exit(10)
+
+
+    Test your program like so:
+
+     ./copy aaa bbb
+     cmp aaa bbb
+
+    for a file aaa. If copy is correct, cmp's output must be empty
+    indicating that the files are equal (see man cmp)
+
+============================================================================
+
+2) [12] 
+
+   Consider class
+ 
+   struct X 
+   {
+     int a;
+     int b;
+     char c;
+     char d;
+
+     // prints object
+     void print() const {
+       printf("[ %d %d %d %d ] ", a, b, c, d);
+     }
+
+     // returns true iff object is equal to o
+     bool equals(const X &o) const {
+       return a == o.a && b == o.b && c == o.c && d == o.d;
+     }
+   }; 
+
+
+   In file serialize.c write functions 
+
+   A) void serialize(const X &x, FILE *fp)
+
+      that writes an object of type X to file *fp in binary. You
+      can choose your own binary format, as long as gaps created
+      by aligning data members are not written to the file. 
+
+   B) void deserialize(X &x, FILE *fp)
+   
+      that reads an object of type X from file *fp using the same
+      binary format as in A)
+
+   C) int main() 
+
+      that tests above functions by serializing and deserializing 
+      X objects like so:
+
+        X x = { 1, 2, 3, 4 };
+        // open file (write+truncate)
+        // ...
+        serialize(x, fp);
+        // close file
+      
+        X y;
+        // open file (read)
+        // ...
+        deserialize(y, fp);
+        // close file
+        // Are x and y equal?
+        // if not, write both
+
+      Use functions X::print and X::equal for testing.

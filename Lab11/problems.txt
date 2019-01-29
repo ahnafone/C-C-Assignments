@@ -1,0 +1,157 @@
+CMPUT 201 (A1) Lab Exercise 11
+
+Due: Friday Dec 7 22:00
+
+Rules:
+
+- IMPORTANT: You need to comment your code. At least in front of every
+  function and every loop, you need to put comments that explain the purpose
+  of the function and how the loop works - in general terms. Also, there will
+  be considerable mark deductions if the code is not formatted well. Comments
+  and well formatted code help TAs with marking your submission
+
+- Your programs must compile without warning using
+
+  g++ -Wall -Wextra -Wconversion -O -std=c++14 ...
+
+- Check your program (say a.out) for memory leaks with valgrind. E.g.
+
+    valgrind a.out
+
+- In case your program hangs, use ctrl-c to terminate it.
+  Use ctrl-d to terminate keyboard input to your programs
+
+- For this exercise you can use the full set of modern C++ and STL features
+
+- When done submit
+
+    README.txt WordCount.h WordCountMain.cpp PointSorter.h PointSorterMain.cpp
+
+  via eClass
+
+LATE SUBMISSIONS WILL NOT BE ACCEPTED
+
+============================================================================
+
+1. Word Count
+
+Implement a program that reads words from stdin and keeps track of their
+counts, and when done, prints the word histogram in non-increasing count order
+like so:
+
+the 392
+moon 10
+bar 1
+clown 1
+
+In case of identical counts the lexicographically smaller word is printed
+first (e.g. bar before clown above)
+
+Note that capitalization matters, i.e. foo and foO are different words
+
+For this purpose, define class WordCount in file WordCount.h that has the
+following public methods:
+
+  // increment count for word w
+  void count(const std::string &w) 
+  {
+    ... implement
+  }
+
+  // print histogram in non-increasing count order to stdout
+  void print() const
+  {
+    ... implement
+  }
+
+Implement these functions on the spot (i.e., there is no WordCount.cpp
+file). Make use of STL types and algorithms (string, set, map, vector, sort
+...) as much as possible. If unsure about STL data types and algorithms
+consult your lecture notes and online STL/C++ references
+
+In file WordCountMain.cpp implement function main() which uses a WordCount
+variable for the program's task described above. You can assume that each word
+occurs at most 2 billion times
+
+Make sure your program doesn't leak memory and is well documented. Test it
+thoroughly
+
+Hints: 
+
+- std::string s; std::cin >> s; reads the next word into string variable s.
+  No other input code is needed
+
+- consider range-based for loops and auto, or cbegin(),cend() when
+  iterating through containers in constant member functions
+
+- to learn how to use std::sort with custom comparison functions/class objects
+  refer to http://www.cplusplus.com/reference/algorithm/sort/
+
+- std::sort doesn't work with associative containers because they are sorted
+  implicitly
+
+Test input:
+
+z y x
+cc cc aa aa cc aa
+
+Test output:
+
+aa 3
+cc 3
+x 1
+y 1
+z 1
+
+============================================================================
+
+2. Point Sorter
+
+For this problem you will produce class PointSorter in file PointSorter.h that
+can sort data by different criteria. It must accept some number of points
+given by two coordinates of type double each, specified by add_point(x, y),
+and store them. Then, when print_sorted_closest_to(x, y) is called, it must
+sort the stored points based on their distance to the specified coordinates,
+and write them to stdout - one point per line - from closest to
+farthest. Implement all methods of PointSorter in PointSorter.h
+
+To test class PointSorter write a program in PointSorterMain.cpp that reads n
+> 0 points given by 2 double values each from stdin and prints the last n-1
+points in order closest to farthest from the first point
+
+Make sure your program doesn't leak memory and is well documented. Test it
+thoroughly
+
+Hints: 
+
+- consider using a custom comparison object for std::sort that stores the
+  first point (see http://www.cplusplus.com/reference/algorithm/sort/ )
+
+- use std::cin >> x >> y; to read points
+
+- the square root function sqrt is defined in header file cmath. Think about a
+  way around using sqrt, because it is slow
+
+Test input:
+
+1 1
+3 3 
+2 2 
+
+Test output:
+
+2 2
+3 3
+
+===========
+
+Test input:
+
+1 1
+2 2 
+2 2 
+
+Test output:
+
+2 2
+2 2

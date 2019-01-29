@@ -1,0 +1,60 @@
+CMPUT 201 (A1) Lab Exercise 9
+
+Due: Friday Nov 23 22:00
+
+Rules:
+
+- IMPORTANT: You need to comment your code. At least in front of every
+  function and every loop, you need to put comments that explain the purpose
+  of the function and how the loop works - in general terms. Also, there will
+  be considerable mark deductions if the code is not formatted well. Comments
+  and well formatted code help TAs with marking your submission
+
+- Your programs must compile without warning using
+
+  g++ -Wall -Wextra -Wconversion -std=c++14 -O ...
+
+- Check your program (say a.out) for memory leaks with valgrind. E.g.
+
+    valgrind a.out
+
+- In case your program hangs, use ctrl-c to terminate it.
+  Use ctrl-d to terminate keyboard input to your programs.
+
+- Download sum.cpp and roll.cpp and solve the problems below
+
+- When done submit
+
+    README.txt sum.cpp roll.cpp
+
+  via eClass
+
+LATE SUBMISSIONS WILL NOT BE ACCEPTED!
+
+============================================================================
+
+1) [12]
+
+   Complete sum.cpp that is supposed to test function sum which adds all
+   elements of a double array using tn threads.
+
+   Compile with -O3 to enable optimization and test the speed of your program
+   using the following calls:
+
+   time ./a.out 4000000 1
+   time ./a.out 4000000 2
+   time ./a.out 4000000 3
+   time ./a.out 4000000 4
+
+   Append the output of these runs to sum.cpp and answer the question stated
+   there before you submit the file
+
+============================================================================
+
+2) [12]
+
+   The program roll.cpp is supposed to test a simple pseudo-random number
+   generator by computing die roll statistics using threads. Test the program
+   for threading issues using valgrind, and fix all issues you encounter
+
+   Summarize your changes at the end of roll.cpp

@@ -1,0 +1,105 @@
+CMPUT 201 (A1) Lab Exercise 7
+
+Due: Friday Nov 2, 22:00
+
+Rules:
+
+- IMPORTANT: You need to comment your code. At least in front of every
+  function and every loop, you need to put comments that explain the purpose
+  of the function and how the loop works - in general terms. Also, there will
+  be considerable mark deductions if the code is not formatted well. Comments
+  and well formatted code help TAs with marking your submission
+
+- Your programs must compile without warning using
+
+  g++ -Wall -Wextra -O ...
+
+- Submit
+
+    README.txt bits.c rotate.c
+
+  on eClass
+
+LATE SUBMISSIONS WILL NOT BE ACCEPTED!
+
+============================================================================
+
+1) [12] 
+
+   In file bits.c write functions 
+
+   A) int count_zeroes(unsigned int x) 
+
+      that returns the numbers of 0-bits in x.
+
+   B) void to_low_order_byte_first(unsigned int A[], int n)
+
+      that converts A, which contains n unsigned int numbers, into
+      low-order-byte-first format. Your function needs to detect at runtime
+      whether it is executed on a little-endian or big-endian machine.
+
+      E.g.
+
+      unsigned int A[] = { 1, 2, 3 };
+      to_low_order_byte_first(A, 3);
+      // memory layout of A after call:
+      //  01 00 00 00 02 00 00 00 03 00 00 00
+
+      Hint: last week's lectures!
+
+   C) int main() 
+
+      that tests count_zeroes and to_low_order_byte_first
+
+============================================================================
+
+2) [12] 
+
+   In file rotate.c write functions
+
+   A) void rotate_right(unsigned char &x);
+
+      that rotates x to the right, i.e. all bits in x are shifted one position
+      to the right, and the lowest-order bit which usually gets lost in the 
+      >> 1 operation reappears as highest-order bit
+
+          00110101
+           \\\\\\\\
+          10011010 \
+          ^        |
+          +--------+
+
+      E.g.   unsigned char x = 1;
+             rotate_right(x);
+             // x = 0x80
+
+             x = 0xc6;
+             rotate_right(x);
+             // x = 0x63
+
+   B)  void rotate_right(unsigned char A[], int n);
+
+       that rotates all bits stored in an n byte array A one position to the
+       right. We assume the lowest-order bit in A to be the lowest-order bit
+       of A[n-1], and the highest-order bit of A to be highest-order bit in
+       A[0]
+
+       E.g. unsigned char A[] = { 0x81, 0x45, 0x03 };
+            rotate_right(A, 3);
+            // A = 0xc0 0xa2 0x81 (right-most 1 re-appears at left-most location)
+	    //
+            // 1000001 01000101 00000011
+            // =>
+            // 1100000 10100010 10000001
+
+            unsigned char A[] = { 0x80, 0x44, 0x02 };
+            rotate_right(A, 3);
+            // A = 0x40 0x22 0x01 (right-most 0 re-appears at left-most location)
+	    //
+            // 1000000 01000100 00000010
+            // =>
+            // 0100000 00100010 00000001
+
+   C) int main()
+
+      that tests both rotate_right functions

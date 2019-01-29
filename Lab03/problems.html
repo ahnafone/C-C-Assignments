@@ -1,0 +1,89 @@
+<meta charset="utf8">
+<html>
+<body>
+<pre>
+CMPUT 201 (A1) Lab Exercise 3
+
+Due: Friday Oct 5, 22:00 via eClass
+
+Rules:
+
+- IMPORTANT: Starting with this lab exercise, you need to comment your code.
+  At least in front of every function and every loop, you need to put comments
+  that explain the purpose of the function and how the loop works - in general
+  terms. Also, there will be considerable mark deductions if the code is not
+  formatted well. Comments and well formatted code help TAs with marking your
+  submission
+
+- You may use all course material and man pages, but no other information such
+  as web pages, books, or written notes. Using other information sources
+  during the exercise constitues cheating
+
+- Your programs must compile without warning using
+
+  g++ -Wall -Wextra -O ...
+
+- In case your program hangs, use ctrl-c to terminate it
+
+- Download README.txt and fill in the requested information
+
+- Submit             README.txt p1.c p2.c 
+  by the due date
+
+- You can submit as often as you want. We will only consider the last
+  submission for marking
+
+============================================================================
+
+1) [8 marks] In file p1.c write a program that reads int values from standard
+   input and prints two numbers when the end of file is reached: the smallest
+   and biggest encountered value (which may be identical). In case anything
+   other than integers appear in the input, the program needs to print
+   "illegal input" and exit. If no number is provided, the output must be
+   "empty input".
+
+   Example:
+
+   Input:
+
+   1 3 0
+     9 32 1 -1
+
+   Output:
+  
+   -1 32
+
+   Test your program with various inputs.
+   Comment your code and format it well!
+
+============================================================================
+
+2) [8 marks] In file p2.c write a function closest_index that, given an array
+   of points and a point p, returns the smallest index of a point in the array
+   that is closest to p. Use assert to ensure that the array length is > 0.
+
+   Use the following point struct:
+    
+     struct Point { double x, y; };
+
+   and the Euclidean distance, which is defined as 
+                      _________________________
+                     /          ₂             ₂ 
+       dist(p, q) = √(p.x - q.x) + (p.y - q.y)
+
+   E.g. given an array containing the following points:
+
+         (0, 1)  (1, 3)  (2, 4)  (-1, 0)
+
+   and p = (1, 3.2), the function needs to return 1, which is the index
+   of the point closest to p.
+   
+   In function main provide code to test your function. You may use
+   function sqrt (include math.h), but perhaps you don't need to. 
+
+   Comment your code and format it well!
+
+============================================================================
+</body>
+</html>
+

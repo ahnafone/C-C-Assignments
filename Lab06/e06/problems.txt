@@ -1,0 +1,116 @@
+CMPUT 201 (A1) Lab Exercise 6
+
+Due: Friday Oct 26, 22:00
+
+Rules:
+
+- IMPORTANT: You need to comment your code. At least in front of every
+  function and every loop, you need to put comments that explain the purpose
+  of the function and how the loop works - in general terms. Also, there will
+  be considerable mark deductions if the code is not formatted well. Comments
+  and well formatted code help TAs with marking your submission
+
+- Your programs must compile without warning using
+
+    g++ -Wall -Wextra -O ...
+
+- Check your program (say a.out) for memory leaks with valgrind. E.g.
+
+    valgrind ./a.out
+
+- In case your program hangs, use ctrl-c to terminate it. Use ctrl-d to
+  terminate keyboard input to your programs.
+
+Steps:
+
+- Create folder e06
+
+- Copy all-files.tar into the directory
+
+- cd to e06 and untar the tar file by running  
+
+    tar xpof *.tar
+
+- Work on Stack.c StackMain.c Matrix.c MatrixMain.c
+  (see below)
+
+- On eClass submit (often)
+
+    README.txt Stack.c StackMain.c Matrix.c MatrixMain.c
+
+LATE SUBMISSIONS WILL NOT BE ACCEPTED !
+
+============================================================================
+
+1) [12] In file Stack.c implement the Stack data structure whose interface is
+   given in Stack.h, which you can't change. Also implement additional test
+   cases in file StackMain.c
+
+   Stacks are data structures which support the following operations:
+
+     constructor: creates empty stack
+     destructor:  releases all memory
+     empty:       returns true iff (meaning "if and only if") stack is empty
+     top:         returns the top-most element (pre-condition: not empty)
+     push:        adds new element at the top
+     pop:         removes top-most element (pre-condition: not empty)
+
+   Example:
+
+   Op.      Stack Contents  empty  top
+
+                            true     runtime error
+   push 5           
+            5               false    5
+   push 6
+            5 6             false    6
+   push 7
+            5 6 7           false    7
+   pop      
+            5 6             false    6
+   push 1             
+            5 6 1           false    1
+
+
+   Stacks are dynamic data structures that can grow and shrink. The
+   implementation chosen here is based on singly-linked lists. SList.h and
+   SList.c are provided and can't be changed. You need to implement all stack
+   functions by calling appropriate SList methods. Note that as a sub-object,
+   list doesn't have to be constructed or destroyed explicitely. This is done
+   automatically whenever a Stack object is created or destroyed. Therefore,
+   Stack's contructor and destructor are empty
+
+   Start by providing mock implementations of all functions that don't do
+   anything but make the compiler happy so that StackMain.c at least compiles
+
+   Add pre-condition checks (using assert) and test your code thoroughly by
+   adding test cases to StackMain.c. In case the expected test behaviour is
+   program termination (such as a failing assert), surround the individual
+   test case code by
+
+   #if 0
+     // test code that is supposed to terminate program
+     // (enable above condition if you want to run test)
+
+     ... test code that should terminate
+     
+     assert(0); // shouldn't get here
+   #endif
+
+   This allows you to switch them on/off easily
+   
+   Also run your program with valgrind to check for memory leaks
+
+============================================================================
+
+2) [13] In files Matrix.c and MatrixMain.c implement and test the functions
+   whose implementation is missing in Matrix.h. Matrix.h can't be changed. The
+   matrix implementation considered here is based on storing all matrix
+   elements in a one-dimensional array
+
+   Start by providing mock implementations of all functions - that don't do
+   anything but make the compiler happy so that MatrixMain.c at least compiles
+
+   Add pre-condition checks (using assert) and test your code thoroughly by
+   adding test cases to MatrixMain.c (see 1. for test code details). Also run
+   your program with valgrind to check for memory leaks

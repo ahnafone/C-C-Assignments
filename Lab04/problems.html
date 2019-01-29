@@ -1,0 +1,97 @@
+<meta charset="utf8">
+<html>
+<body>
+<pre>
+CMPUT 201 (A1) Lab Exercise 4
+
+Due: Friday Oct 12, 22:00 via eClass
+
+Rules:
+
+- IMPORTANT: You need to comment your code.  At least in front of every
+  function and every loop, you need to put comments that explain the purpose
+  of the function and how the loop works - in general terms. Also, there will
+  be considerable mark deductions if the code is not formatted well. Comments
+  and well formatted code help TAs with marking your submission.
+
+- You can use all course material and man pages, but you should be able to
+  solve the problems below without web searches or communicating with other
+  students. In the exams you will be asked to solve similar problems ...
+
+- Your programs must compile without warning using
+
+  g++ -Wall -Wextra -O ...
+
+- In case your program hangs, use ctrl-c to terminate it.
+  Use ctrl-d to terminate keyboard input to your programs.
+
+- Download README.txt and fill in the requested information
+
+- Submit             README.txt p1.c p2.c 
+  by the due date
+
+- You can submit as often as you want. We will only consider the last
+  submission for marking
+
+============================================================================
+
+1) [8 marks] In file p1.c write a C++ program that reads characters from
+standard input and prints them in reverse order. If the input contains more
+than 10,000,000 bytes, the program must report "input too long" and return
+value 1. Otherwise, after printing all characters in reverse it must return
+value 0.
+
+Test your program with various inputs and make sure that no memory is leaked,
+i.e., before returning from main, all allocated memory has to be returned to
+the operating system.
+
+Note: You can't store big arrays on the runtime stack because it's usually
+quite small (a few megabytes)
+
+Comment your code and format it well!
+
+============================================================================
+
+2) [8 marks] In file p2.c write a C++ program that depending on a single
+   command line option either prints
+
+- the number of characters (option -c) read from standard input,
+
+    The number of characters reported by 
+      ./p2 -c < file
+
+    must match the number printed by
+      wc -c file
+
+- the number of words (option -w) read from standard input,
+
+    A word is any sequence of characters different from the space character ' '
+    and newline character '\n'.
+
+    E.g. 
+ 
+      ./p2 -w
+
+      this is a test
+        of the 
+       -w option
+
+     [ctrl-d to terminate input]
+
+     output: 8
+
+- the number of lines (option -l) read from standard input, which is defined
+  as the number of encountered '\n' characters,
+
+- or error message ("illegal option") when not exactly one legal argument is
+  passed to the program.
+
+- or "read error" when a read error occurs.
+
+Test your program with various inputs and make sure that no memory is leaked,
+i.e., before returning from main, all allocated memory has to be returned to
+the operating system.
+
+Comment your code and format it well!
+</body>
+</html>

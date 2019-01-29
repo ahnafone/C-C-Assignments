@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main()
+{
+  int x = 24; //use different values to test your program
+  int j = 2;
+  int div_count = 0;
+
+  while (j < x) {
+    if (x % j == 0) {
+      div_count++;
+      j++;
+    }
+    else
+      j++;
+  }
+
+  printf("%d can be divided by %d numbers\n", x, div_count);
+  
+  return 0;
+}

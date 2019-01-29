@@ -1,0 +1,105 @@
+CMPUT 201 (A1) Lab Exercise 10
+
+Due: Friday Nov 30 22:00
+
+Rules:
+
+- IMPORTANT: You need to comment your code. At least in front of every
+  function and every loop, you need to put comments that explain the purpose
+  of the function and how the loop works - in general terms. Also, there will
+  be considerable mark deductions if the code is not formatted well. Comments
+  and well formatted code help TAs with marking your submission
+
+- Your programs must compile without warning using
+
+  g++ -Wall -Wextra -Wconversion -O -std=c++14 ...
+
+- Check your program (say a.out) for memory leaks with valgrind. E.g.
+
+    valgrind a.out
+
+- In case your program hangs, use ctrl-c to terminate it.
+  Use ctrl-d to terminate keyboard input to your programs.
+
+- When done submit 
+
+    README.txt func.cpp vec.cpp
+
+  via eClass
+  
+LATE SUBMISSIONS WILL NOT BE ACCEPTED!
+
+============================================================================
+
+1) [12] In file func.cpp write the following function templates:
+
+  A) dot_product
+
+     input:  two arrays A,B with identical yet *arbitrary* element type, 
+             integer n > 0 representing the number of elements in each array
+
+     effect: returns the sum of products of A[i] and B[i], which has
+             the same type as the array elements
+
+
+  B) selection_sort
+
+     input: array A of *arbitrary* element type,
+            integer n >= 0 representing the number of elements in A
+
+     effect: sort elements in A in ascending order using operator < by
+             repeatedly finding the maximum element, swapping it with the last
+             element, and then reducing the array size by 1 until done.
+
+    Hint: selection sort was covered in 
+    https://skatgame.net/mburo/courses/201/material/lec-week05
+
+In main() create 2 test cases with different types for each function
+
+============================================================================
+
+2) [12] In file vec.cpp implement the class template version of the Vector
+   class we discussed in week 7. See files Vector.h, Vector.cpp, and
+   VectorMain.cpp in
+
+   https://skatgame.net/mburo/courses/201/material/lec-week07-code/c++
+
+   Steps:
+
+   1. Copy Vector.h into vec.cpp
+   2. Turn the class into a class template
+   3. Copy the implementation code snippets from Vector.cpp into the class
+      definition in vec.cpp
+   4. Write test code in main
+
+   All class member functions must be implemented in the template Vector class
+   definition
+
+   Also implement the following class operator which will let us use Vectors
+   like C-arrays:
+
+   // after bounds checking in debug mode
+   // returns reference to i-th Vector element
+   ... operator[](int i) 
+   {
+     ...
+   }   
+
+   (The compiler translates a[i] = v; into a.operator[](i) = v;)
+
+   In main() test Vector functions with at least two types, like so:
+
+   const int N = 5;
+   Vector<int> vi(N);
+   ... test int Vector functionality 
+   ... e.g.
+   vi[0] = 1;
+   printf("%d", vi[0]);
+   ...
+
+   Vector<const char *> vs(N);
+   ... test string Vector functionality
+   ... e.g.
+   vs[0] = "foo";
+   printf("%s", vs[0]);
+   ...

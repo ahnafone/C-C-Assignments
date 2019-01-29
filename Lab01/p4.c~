@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main()
+{
+  int val_max =   1000;
+  int count1 =  2;
+  int count2 = 2;
+  int numberOfPrimes = 0;
+
+  while (count1 <= val_max) {
+    count2 = 2;
+    
+    while (count2 < count1) {
+      if (count1 % count2 == 0)
+	break;
+      else
+	count2++;
+    }
+
+    if (count2 == count1)
+      numberOfPrimes++;
+    
+    count1++;
+  }
+
+  printf("%d\n", numberOfPrimes);
+
+  return 0;
+}

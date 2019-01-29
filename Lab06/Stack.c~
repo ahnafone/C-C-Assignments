@@ -1,0 +1,53 @@
+/*
+ * CMPUT 201 Lab 06
+ * Stack.c
+ * Author: Ahnaf Ahmed, 1560767
+ */
+#include "Stack.h"
+#include "SList.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+/*
+// constructor
+// nothing to do, list (below) is constructed automatically
+Stack::Stack() { }
+
+// destructor
+// nothing to do, list (below) is destroyed automatically
+Stack::~Stack() { }
+*/
+
+// return true iff stack is empty
+bool Stack::empty() {
+    if (list.size() == 0)
+        return true;
+    return false;
+}
+
+// return top element
+// pre-cond: not empty
+int Stack::top() {
+    if(empty()) {   //exit if empty
+        printf("Empty List error: no top element\n");
+        exit(1);
+    }
+    Node *head = list.get_head();    //returns the head node
+    int x = head->data;
+    return x;             //returns head data
+}
+
+// add new element on top
+void Stack::push(int x) {
+    list.add_head(x);
+}
+
+// remove topmost element
+// pre-cond: not empty
+void Stack::pop() {
+    if(empty()) {   //exit if empty
+        printf("Empty List error: cannot pop\n");
+        exit(1);
+    }
+    list.remove_head();             //removes top of list
+}

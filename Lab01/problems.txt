@@ -1,0 +1,117 @@
+CMPUT 201 (A1) Lab Exercise 1
+
+Due: Friday Sep 21, 22:00 via eClass
+
+Rules:
+
+- You can use all course material and man pages, but you should be able to
+  solve the problems below without web searches or communicating with other
+  students. In the exams you will be asked to solve similar problems ...
+
+- Your programs must compile without warning using
+
+  g++ -Wall -Wextra -O ...
+
+  on our lab computers. In case there are compiler warnings or errors, you'll
+  receive 0 marks for this part.
+
+- Test your programs with different values. For now, the speed of your program
+  is irrelevant. So don't spend time on optimization.
+
+- Your programs must be well structured, indented, and commented. Use ctrl-x t
+  in Emacs to pretty-print it. Marks are assigned to functionality, program
+  appearance, and comments
+
+- In case your program hangs, use ctrl-c to terminate it.
+
+- Download README.txt and fill in the requested information
+
+- Submit             README.txt p1.txt p2.c p3.c p4.c
+  by the due date
+  
+- You can submit as often as you want. We will only consider the last
+  submission for marking.
+
+============================================================================
+
+1) [4 marks] Using a method of your choice, create a text file 
+
+                       p1.txt 
+
+   that contains exactly 400 lines, each of which containing
+
+This is a useless text file
+
+   and a newline symbol at the end
+
+   Then add an explanation at the end of p1.txt describing how you
+   created the file
+
+============================================================================
+
+2) [4 marks] Copy and paste the following C program into file p2.c and correct
+   all mistakes. You are not allowed to change the structure of the
+   program. For a given value x, the program is supposed to print the number
+   of integers from 2 to x-1 that divide x.
+               
+                      output
+   E.g.   x = 5   =>  0
+          x = 6   =>  2 
+          x = 24  =>  6 
+
+int main()
+{
+  int x = 100; // use different values to test your program
+  int j = 1;
+  int div_count;
+  while (j <= x) {
+    if (x % j = 0) {
+      ++div_count;
+    }
+  }
+
+  printf("%d can be divided by d numbers\n", x, j);
+}
+
+   Test your program with different values!
+
+============================================================================
+
+3) [8 marks] Write a C program p3.c that tests whether a given 
+
+      unsigned int y
+
+   value is the square of an integer. If it is, print yes. Otherwise, print no.
+
+                             output
+   E.g.   y = 5              no
+          y = 16 (= 4*4)     yes
+          y = 49 (= 7*7)     yes
+
+   The first line in function main must start with 
+
+     unsigned int y = 
+
+   Test your program with different values!
+
+============================================================================
+
+4) [8 marks] Write a C program p4.c that computes the number of prime numbers
+   that are less or equal to a given value val_max. A prime number is an integer
+   p ≥ 2 that cannot be divided by any integer between 1 and p.
+
+   The list of prime numbers starts with 2, 3, 5, 7, 11, 13, 17, 19, ...
+
+   E.g.
+                    output
+     val_max = 0     0
+     val_max = 1     0
+     val_max = 2     1
+     val_max = 10    4
+     val_max = 19    8
+
+   The first line in function main must start with
+
+     int val_max = 
+
+   Test your program with different values!
